@@ -30,10 +30,13 @@ export class PaginaLoginComponent {
       const usuario = usuarios.find((usuario) => usuario.email === this.login.email && usuario.senha === this.login.senha);
       if(usuario) {
         // this.paginaLoginService.login(this.login);
-        window.alert('Usuario logado');
         setTimeout(() => {
           this.router.navigate(['/home']);
-        }, 500);
+        }, 300);
+        setTimeout(() => {
+          window.alert('Usuário logado com sucesso!');
+        }, 600);
+        
       } else {
         window.alert('Usuário e/ou senha incorretos');
   }
