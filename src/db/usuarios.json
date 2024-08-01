@@ -1,0 +1,25 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "Charles Francis Xavier",
+        "email": "adm@school.com",
+        "senha": "pass1",
+        "perfil": "Administrador"
+      },
+      {
+        "id": 2,
+        "nome": "James Logan Howlett",
+        "email": "docente@school.com",
+        "senha": "pass2",
+        "perfil": "Docente"
+      },
+      {
+        "id": 3,
+        "nome": "Jean Elaine Grey",
+        "email": "aluno@school.com",
+        "senha": "pass3",
+        "perfil": "Aluno"
+      }
+    ]
+  }
