@@ -8,14 +8,10 @@ body {
   }
   
   .login {
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
     background-color: #fff;
     border-radius: 15px;
     padding: 40px;
     width: 300px;
-    /* box-shadow: 0 4px 8px gray; */
   }
   
   
@@ -26,7 +22,6 @@ body {
     font-size: 24px;
     color: black;
     font-weight: bold;
-    /* background-color: aquamarine; */
   }
   
   .form-group {
@@ -37,7 +32,6 @@ body {
   label {
     display: block;
     margin-bottom: 5px;
-    /* font-weight: bold; */
   }
   
   
@@ -46,7 +40,6 @@ input {
     padding: 10px 0px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    /* outline: none; */
     transition: border-color 1.5s;
   }
   
@@ -58,9 +51,6 @@ input {
     margin-bottom: 10px;
   }
 
-  /* input[type="password"] {
-    margin-bottom: 0px;
-  } */
  
   button[type="submit"] {
     width: 100%;
@@ -94,7 +84,6 @@ input {
     display: flex;
     justify-content: center;
     align-items: center; 
-    /* background-color: aquamarine; */
     margin: 25px 0px;
   
   }
@@ -106,7 +95,6 @@ input {
   }
 
   button[type="button"] {
-    /* width: 100%; */
     padding: 8px;
     margin: 5px;
     background-color: white;
@@ -121,14 +109,7 @@ input {
   button[type="button"]:hover {
     background-color: #5a54cc;
   }
-  
 
-  
-  
-   .login-image {
-    background-color: aquamarine;
-    max-width: 60%;
-  } 
 
    img {
     max-width: 40%;
@@ -136,21 +117,3 @@ input {
   }
   
   
-  /* @media (min-width: 768px) {
-    .login-container {
-      width: 700px;
-    }
-  
-    .login-form {
-      width: 50%;
-    }
-  
-    .login-image {
-      display: block;
-      width: 50%;
-      background: url('../../../public/Learning-cuate.png') no-repeat center center;
-      background-size: cover;
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
-    }
-  }  */

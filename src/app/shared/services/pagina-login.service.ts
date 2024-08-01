@@ -7,11 +7,11 @@ export class PaginaLoginService {
 
   constructor() { }
 
-  login(usuario: {email: string, senha: string}) {
-    sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
-  }
+  // login(usuario: {email: string, senha: string}) {
+  //   sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
+  // }
 
-  logout() {
-    sessionStorage.removeItem('usuarioLogado');
-  }
+  // logout() {
+  //   sessionStorage.removeItem('usuarioLogado');
+  // }
 }

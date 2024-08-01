@@ -2,7 +2,7 @@
   
 <div class="login">
   <h2>Login</h2>
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="entrar()">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" id="email" [(ngModel)]="login.email" name="email" required />
@@ -12,7 +12,7 @@
           <label for="password">Senha</label>
           <input type="password" id="password" [(ngModel)]="login.senha" name="password" required />
         </div>
-        <a href="#" (click)="esqueciSenha()">Esqueci minha senha</a>
+        <a href="#" (click)="esqueciSenha($event)">Esqueci minha senha</a>
     
         <button type="submit" class="enter-button">Entrar</button>
 
@@ -22,8 +22,6 @@
       </div>
       </form>
   </div>
-  <!-- <div class="login-image"> -->
     <img src="Learning-cuate_amarela.png" >
-  <!-- </div> -->
 </body>
   
