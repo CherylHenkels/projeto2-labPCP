@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { MenuLateralComponent } from "./shared/components/menu-lateral/menu-lateral.component";
 
 @Component({
@@ -12,4 +12,5 @@ import { MenuLateralComponent } from "./shared/components/menu-lateral/menu-late
 })
 export class AppComponent {
   title = 'labPCP';
+  constructor(public router: Router) {}
 }

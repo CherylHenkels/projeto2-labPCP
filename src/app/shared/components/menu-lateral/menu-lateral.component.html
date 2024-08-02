@@ -1,32 +1,16 @@
-<!-- <nav class="side-menu">
-    <button (click)="toggleMenu()">&#9776;</button>
-<nav class="side-menu">
-  <button (click)="toggleMenu()">&#9776;</button>
-  <div *ngIf="isMenuOpen">
-    <ul>
-      <li><button (click)="navigateTo('/inicio')">Início</button></li>
-      <li *ngIf="isAdmin"><button (click)="navigateTo('/cadastro-docente')">Cadastro Docente</button></li>
-      <li *ngIf="isAdmin"><button (click)="navigateTo('/cadastro-aluno')">Cadastro de Aluno</button></li>
-      <li *ngIf="isAdmin || isDocente"><button (click)="navigateTo('/cadastro-turma')">Cadastro de Turma</button></li>
-      <li *ngIf="isAdmin || isDocente"><button (click)="navigateTo('/cadastro-avaliacao')">Cadastro de Avaliação/Nota</button></li>
-      <li *ngIf="isAdmin"><button (click)="navigateTo('/listagem-docentes')">Listagem de Docentes</button></li>
-      <li *ngIf="isAluno"><button (click)="navigateTo('/notas')">Notas</button></li>
-      <li><button (click)="logout()">Sair</button></li>
-    </ul>
-  </div>
-</nav> -->
+
 
 <nav class="menu-lateral">
-    <button (click)="toggleMenu()">&equiv;</button> <!-- &#9776; é o ícone de 3 traços -->
-    <div >
+    <button (click)="abreFechaMenu()">&equiv;</button> <!-- &#9776; é o ícone de 3 traços -->
+    <div  *ngIf="isMenuOpen">
       <ul>
-        <li><button >Início</button></li>
-        <li><button >Cadastro Docente</button></li>
-        <li><button >Cadastro de Aluno</button></li>
-        <li><button >Cadastro de Turma</button></li>
-        <li><button >Cadastro de Nota</button></li>
-        <li><button >Listagem de Docentes</button></li>
-        <li><button >Notas</button></li>
+        <li><button (click)="navegarPara('/inicio')">Início</button></li>
+        <li><button (click)="navegarPara('/cadastro-docente')">Cadastro de Docente</button></li>
+        <li><button (click)="navegarPara('/cadastro-aluno')">Cadastro de Aluno</button></li>
+        <li><button (click)="navegarPara('/cadastro-turma')">Cadastro de Turma</button></li>
+        <li><button (click)="navegarPara('/cadastro-aluno')">Cadastro de Nota</button></li>
+        <li><button (click)="navegarPara('/listagem-docentes')">Listagem de Docentes</button></li>
+        <li><button (click)="navegarPara('/notas')">Notas</button></li>
         <li><button (click)="logout()">Sair</button></li>
       </ul>
     </div>

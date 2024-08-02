@@ -1,12 +1,12 @@
 .menu-lateral {
     font-family: Arial, sans-serif;
-    width: 250px;
+    /* width: 250px; */
     background-color: #6c63ff;
     position: fixed;
-    height: 100%;
+    /* height: 100%; */
     /* overflow: auto; */
     /* transition: width 0.3s; */
-    padding-top: 20px;
+    /* padding-top: 20px; */
   }
   
   .menu-lateral button:first-child {
@@ -15,8 +15,14 @@
     color: white;
     font-size: 35px;
     cursor: pointer;
-    margin-left: 15px;
+    /* margin-left: 15px; */
     padding: 0px 8px;
+  }
+
+   .menu-lateral div{
+    width: 250px;
+    height: 100vh;
+    /* background-color: aquamarine; */
   }
 
   .menu-lateral button:first-child:hover {
