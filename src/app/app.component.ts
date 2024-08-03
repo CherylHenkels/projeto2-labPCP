@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { MenuLateralComponent } from "./shared/components/menu-lateral/menu-lateral.component";
+import { PaginaLoginService } from './shared/services/pagina-login.service';
 
 @Component({
   selector: 'app-root',
@@ -12,5 +13,13 @@ import { MenuLateralComponent } from "./shared/components/menu-lateral/menu-late
 })
 export class AppComponent {
   title = 'labPCP';
-  constructor(public router: Router) {}
+  constructor(public router: Router, public paginaLoginService: PaginaLoginService) {}
+
+  get isLoggedIn(): boolean {
+    return this.paginaLoginService.isLoggedIn();
+  }
+
+  // get userProfile(): string | null {
+  //   return this.paginaLoginService.getPerfil();
+  // }
 }
