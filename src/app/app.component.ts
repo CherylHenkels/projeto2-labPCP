@@ -19,7 +19,5 @@ export class AppComponent {
     return this.paginaLoginService.isLoggedIn();
   }
 
-  // get userProfile(): string | null {
-  //   return this.paginaLoginService.getPerfil();
-  // }
+ 
 }

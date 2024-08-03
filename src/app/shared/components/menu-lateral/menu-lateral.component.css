@@ -1,12 +1,7 @@
 .menu-lateral {
     font-family: Arial, sans-serif;
-    /* width: 250px; */
     background-color: #6c63ff;
     position: fixed;
-    /* height: 100%; */
-    /* overflow: auto; */
-    /* transition: width 0.3s; */
-    /* padding-top: 20px; */
   }
   
   .menu-lateral button:first-child {
@@ -15,14 +10,12 @@
     color: white;
     font-size: 35px;
     cursor: pointer;
-    /* margin-left: 15px; */
     padding: 0px 8px;
   }
 
    .menu-lateral div{
     width: 250px;
     height: 100vh;
-    /* background-color: aquamarine; */
   }
 
   .menu-lateral button:first-child:hover {
@@ -30,7 +23,6 @@
   }
   
   .menu-lateral ul {
-    /* list-style-type: none; */
     padding: 0;
   }
   
@@ -53,8 +45,3 @@
   .menu-lateral ul li button:hover {
     background-color:  #5a54cc;
   }
-/*   
-  .menu-lateral ul li button.active {
-    background-color: #4CAF50;
-    color: white;
-  } */

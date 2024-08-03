@@ -14,18 +14,15 @@ import { MenuLateralService } from '../../services/menu-lateral.service';
 export class MenuLateralComponent {
 
   isMenuOpen = true;
-  // perfilLogado: string;
+  
 
   
 
 
   constructor(private router: Router, public paginaLoginService: PaginaLoginService, public menuLateralService: MenuLateralService) {
-    // this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado()
    }
 
 
-
-   // Imprimirá "Administrador", "Docente" ou "Aluno"
 
 
 abreFechaMenu() {
@@ -43,19 +40,16 @@ logout() {
 
 get isAdmin(): boolean {
   let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
-  // console.log("dentro do isAdmin " + perfilLogado);
   return perfilLogado === 'Administrador';
 }
 
 get isDocente(): boolean {
   let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
-  // console.log("dentro do isDocente " + perfilLogado);
   return perfilLogado === 'Docente';
 }
 
 get isAluno(): boolean {
 let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
-  // console.log("dentro do isAluno " + perfilLogado);
   return perfilLogado === 'Aluno';
 }
 }
