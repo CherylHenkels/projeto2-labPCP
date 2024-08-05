@@ -19,7 +19,8 @@ export class PaginaLoginComponent {
   login = {
     email: '',
     senha: '',
-    perfil: ''
+    perfil: '',
+    nome: ''
   };
 
   constructor(private paginaLoginService: PaginaLoginService,private usuariosService: UsuariosService, private router: Router) {}
@@ -35,6 +36,7 @@ export class PaginaLoginComponent {
             console.log('O perfil do usuário é:', perfil); // Imprimirá "Administrador", "Docente" ou "Aluno"
 
             this.login.perfil = perfil.perfil;
+            this.login.nome = perfil.nome;
             
 
           } else {
@@ -49,6 +51,8 @@ export class PaginaLoginComponent {
           // console.log("login:" + this.login.email);
           // console.log("senha" + this.login.senha);
           // console.log("perfil" +this.login.perfil);
+          // console.log("nome" +this.login.nome);
+
           this.paginaLoginService.login(this.login);
           this.router.navigate(['/home']);
         }, 300);

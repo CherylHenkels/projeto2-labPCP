@@ -1,4 +1,8 @@
 <div *ngIf="router.url !== '/login'">
     <app-menu-lateral></app-menu-lateral>
   </div>
+  <div *ngIf="router.url !== '/login'">
+    <!-- <app-toolbar [title]="title"></app-toolbar> -->
+    <app-toolbar></app-toolbar>
+  </div>
 <router-outlet></router-outlet>
