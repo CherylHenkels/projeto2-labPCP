@@ -18,7 +18,9 @@ export class PaginaLoginComponent {
 
   login = {
     email: '',
-    senha: ''
+    senha: '',
+    perfil: '',
+    nome: ''
   };
 
   constructor(private paginaLoginService: PaginaLoginService,private usuariosService: UsuariosService, private router: Router) {}
@@ -29,8 +31,29 @@ export class PaginaLoginComponent {
    this.usuariosService.getUsuarios().subscribe((usuarios) => {
       const usuario = usuarios.find((usuario) => usuario.email === this.login.email && usuario.senha === this.login.senha);
       if(usuario) {
-        // this.paginaLoginService.login(this.login);
+        this.paginaLoginService.getPerfil(usuario.email).subscribe(perfil => {
+          if (perfil) {
+            console.log('O perfil do usuário é:', perfil); // Imprimirá "Administrador", "Docente" ou "Aluno"
+
+            this.login.perfil = perfil.perfil;
+            this.login.nome = perfil.nome;
+            
+
+          } else {
+            console.error('Usuário não encontrado');
+          }
+        });
+       
+
+ 
         setTimeout(() => {
+
+          // console.log("login:" + this.login.email);
+          // console.log("senha" + this.login.senha);
+          // console.log("perfil" +this.login.perfil);
+          // console.log("nome" +this.login.nome);
+
+          this.paginaLoginService.login(this.login);
           this.router.navigate(['/home']);
         }, 300);
         setTimeout(() => {
