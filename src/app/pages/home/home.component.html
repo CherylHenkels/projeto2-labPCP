@@ -1,1 +1,19 @@
-<p>home works!</p>
+<!-- <main>
+    <div class="container-cards">
+      <app-card *ngFor="let atividade of listaAtividades" [elemento]="atividade"></app-card>
+    </div>
+  </main> -->
+
+  <main>
+    <div class="alunos">
+        <app-card
+          *ngFor="let aluno of alunos"
+          [aluno]="aluno">
+        </app-card>
+      </div>
+  </main>
+
+
+  <!-- [isAdmin]="isAdmin"
+   (verMais)="verMais($event)"
+  (lancarNota)="lancarNota($event)" -->

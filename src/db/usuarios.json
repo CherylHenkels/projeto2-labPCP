@@ -5,21 +5,24 @@
         "nome": "Charles Francis Xavier",
         "email": "adm@school.com",
         "senha": "pass1",
-        "perfil": "Administrador"
+        "perfil": "Administrador",
+        "idade": 10
       },
       {
         "id": 2,
         "nome": "James Logan Howlett",
         "email": "docente@school.com",
         "senha": "pass2",
-        "perfil": "Docente"
+        "perfil": "Docente",
+        "idade": 10
       },
       {
         "id": 3,
         "nome": "Jean Elaine Grey",
         "email": "aluno@school.com",
         "senha": "pass3",
-        "perfil": "Aluno"
+        "perfil": "Aluno",
+        "idade":10
       }
     ]
   }
