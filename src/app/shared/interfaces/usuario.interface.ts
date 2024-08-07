@@ -4,4 +4,6 @@ export interface UsuarioInterface {
     email: string;
     senha: string;
     perfil: string;
+    idade: number;
+    telefone: string;
   }

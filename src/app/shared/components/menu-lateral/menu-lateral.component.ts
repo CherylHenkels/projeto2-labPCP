@@ -15,10 +15,6 @@ export class MenuLateralComponent {
 
   isMenuOpen = true;
   
-
-  
-
-
   constructor(private router: Router, public paginaLoginService: PaginaLoginService, public menuLateralService: MenuLateralService) {
    }
 
