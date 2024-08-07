@@ -15,11 +15,37 @@
           </div>
         </div>
 
-    <div *ngIf="isAdmin || isDocente" class="alunos">
-        <app-card
-          *ngFor="let aluno of alunos"
-          [aluno]="aluno">
-        </app-card>
-      </div>
+        <div *ngIf="isAdmin || isDocente"  class="pesquisa">
+            <div class="campo-pesquisa">
+            <input 
+              type="text" 
+              placeholder="Digite nome, telefone ou e-mail" 
+              [(ngModel)]="valorBusca" 
+              (input)="buscaAluno()"
+            />
+            <button (click)="selecionaPrimeiroAluno()">Buscar</button>
+            </div>
+            <div class="resultados-busca" *ngIf="valorBusca; else templateTodosAlunos">
+                <!-- <ul>
+                  <li *ngFor="let aluno of alunosEncontrados">
+                    {{ aluno.nome }}
+                  </li>
+                </ul> -->
+                <app-card
+                *ngFor="let aluno of alunosEncontrados"
+                [aluno]="aluno">
+              </app-card>
+              </div>
+            
+          </div>
+
+          <ng-template #templateTodosAlunos>
+            <div *ngIf="isAdmin || isDocente" class="alunos" >
+              <app-card
+                *ngFor="let aluno of alunos"
+                [aluno]="aluno">
+              </app-card>
+            </div>
+            </ng-template>
   </main>
 

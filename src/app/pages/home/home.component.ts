@@ -7,11 +7,12 @@ import { DocentesService } from '../../shared/services/docentes.service';
 import { TurmasService } from '../../shared/services/turmas.service';
 import { EstatisticasInterface } from '../../shared/interfaces/estatisticas.interface';
 import { MenuLateralService } from '../../shared/services/menu-lateral.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent, CommonModule],
+  imports: [CardComponent, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -27,6 +28,10 @@ export class HomeComponent implements OnInit {
     numeroDocentes: 0,
     numeroTurmas: 0
   };
+
+  valorBusca: string = '';
+
+  alunosEncontrados: UsuarioInterface[] = [];
 
   constructor(private alunoService: AlunoService,
               private docenteService: DocentesService, 
@@ -58,6 +63,23 @@ export class HomeComponent implements OnInit {
     this.alunoService.getAlunosMatriculados().subscribe(alunos => {
       this.alunos = alunos;
     });
+}
+
+buscaAluno() {
+  if (this.valorBusca) {
+    this.alunosEncontrados = this.alunos.filter((aluno) =>
+      aluno.nome.toLowerCase().includes(this.valorBusca.toLowerCase()) ||
+      aluno.telefone.toLowerCase().includes(this.valorBusca.toLowerCase()) ||
+      aluno.email.toLowerCase().includes(this.valorBusca.toLowerCase())
+    );
+  } else {
+    this.alunosEncontrados = this.alunos;
+  }
+}
+
+selecionaPrimeiroAluno() {
+  this.valorBusca = this.alunosEncontrados[0].nome;
+  this.buscaAluno();
 }
 
 get isAdmin(): boolean {

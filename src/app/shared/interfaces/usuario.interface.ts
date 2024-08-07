@@ -5,4 +5,5 @@ export interface UsuarioInterface {
     senha: string;
     perfil: string;
     idade: number;
+    telefone: string;
   }

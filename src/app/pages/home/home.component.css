@@ -8,6 +8,53 @@ main{
     justify-content: center;
 }
 
+.resultados-busca{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pesquisa {
+    margin-top: 50px;
+  }
+  
+  .campo-pesquisa {
+    display: flex;
+    justify-content: center;
+  }
+
+  .campo-pesquisa button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 0px;
+  }
+  .pesquisa input {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* .resultados-busca {
+    margin-top: 50px;
+  }
+  
+  .resultados-busca ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .resultados-busca li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+   */
+
 .estatisticas{
     display: flex;
     flex-wrap: wrap;
