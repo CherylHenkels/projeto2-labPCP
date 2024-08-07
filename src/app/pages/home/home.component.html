@@ -1,11 +1,21 @@
-<!-- <main>
-    <div class="container-cards">
-      <app-card *ngFor="let atividade of listaAtividades" [elemento]="atividade"></app-card>
-    </div>
-  </main> -->
-
   <main>
-    <div class="alunos">
+        <div *ngIf="isAdmin" class="estatisticas">
+          <h2>Estatísticas do Sistema</h2>
+          <div class="estatistica">
+            <h3>Alunos</h3>
+            <p>{{ estatisticas.numeroAlunos }}</p>
+          </div>
+          <div class="estatistica">
+            <h3>Docentes</h3>
+            <p>{{ estatisticas.numeroDocentes }}</p>
+          </div>
+          <div class="estatistica">
+            <h3>Turmas</h3>
+            <p>{{ estatisticas.numeroTurmas }}</p>
+          </div>
+        </div>
+
+    <div *ngIf="isAdmin || isDocente" class="alunos">
         <app-card
           *ngFor="let aluno of alunos"
           [aluno]="aluno">
@@ -13,7 +23,3 @@
       </div>
   </main>
 
-
-  <!-- [isAdmin]="isAdmin"
-   (verMais)="verMais($event)"
-  (lancarNota)="lancarNota($event)" -->

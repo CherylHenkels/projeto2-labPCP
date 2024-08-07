@@ -45,6 +45,12 @@ export class AlunoService {
     );
   }
 
+  numeroAlunosMatriculados(): Observable<number> {
+    return this.getAlunosMatriculados().pipe(
+      map(alunos => alunos.length)
+    );
+  }
+
 
 }
   

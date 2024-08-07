@@ -1,46 +1,4 @@
 {
-    "usuarios": [
-      {
-        "id": 1,
-        "nome": "Charles Francis Xavier",
-        "email": "adm@school.com",
-        "senha": "pass1",
-        "perfil": "Administrador",
-        "idade": 68
-      },
-      {
-        "id": 2,
-        "nome": "James Logan Howlett",
-        "email": "docente@school.com",
-        "senha": "pass2",
-        "perfil": "Docente",
-        "idade": 101
-      },
-      {
-        "id": 3,
-        "nome": "Jean Elaine Grey",
-        "email": "aluno@school.com",
-        "senha": "pass3",
-        "perfil": "Aluno",
-        "idade":28
-      },
-      {
-        "id": 4,
-        "nome": "Scott Summers",
-        "email": "aluno2@school.com",
-        "senha": "pass3",
-        "perfil": "Aluno",
-        "idade":29
-      },
-      {
-        "id": 5,
-        "nome": "Ororo Munroe",
-        "email": "docente2@school.com",
-        "senha": "pass2",
-        "perfil": "Docente",
-        "idade":32
-      }
-    ],
     "turmas": [
       {
         "id": 1,
@@ -84,5 +42,3 @@
       }
     ]
   }
-
-  
