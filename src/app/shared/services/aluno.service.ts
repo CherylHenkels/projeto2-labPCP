@@ -27,17 +27,7 @@ export class AlunoService {
 
   constructor(private usuariosService: UsuariosService) { }
 
-  // getAlunosMatriculados(): UsuarioInterface[] {
-  //   let alunosMatriculados: UsuarioInterface[] = [];
-  // this.usuariosService.getUsuarios().subscribe((usuarios) => {
-  //   const usuario = usuarios.find((usuario) => usuario.perfil === "Aluno" );
-  //   if(usuario) {
-  //     alunosMatriculados.push(usuario);
-  //   } 
-  //         return alunosMatriculados;
-        
-  // });
-  //   }
+
 
   getAlunosMatriculados(): Observable<UsuarioInterface[]> {
     return this.usuariosService.getUsuarios().pipe(

@@ -40,21 +40,6 @@ main{
     font-size: 16px;
   }
   
-  /* .resultados-busca {
-    margin-top: 50px;
-  }
-  
-  .resultados-busca ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .resultados-busca li {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-  }
-   */
-
 .estatisticas{
     display: flex;
     flex-wrap: wrap;
@@ -79,9 +64,7 @@ main{
     background-color: #f5ebff;
     border-radius: 5%;
   }
-  
-
-  
+    
   .estatistica h3 {
     margin: 0;
     font-size: 18px;

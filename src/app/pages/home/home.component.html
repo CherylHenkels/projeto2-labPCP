@@ -26,11 +26,6 @@
             <button (click)="selecionaPrimeiroAluno()">Buscar</button>
             </div>
             <div class="resultados-busca" *ngIf="valorBusca; else templateTodosAlunos">
-                <!-- <ul>
-                  <li *ngFor="let aluno of alunosEncontrados">
-                    {{ aluno.nome }}
-                  </li>
-                </ul> -->
                 <app-card
                 *ngFor="let aluno of alunosEncontrados"
                 [aluno]="aluno">
