@@ -42,5 +42,30 @@
               </app-card>
             </div>
             </ng-template>
+
+            <div *ngIf="isAluno" class="aluno-home">
+                <section class="minhas-notas">
+                  <h2>Minhas Notas</h2>
+                  <div (click)="navegarPaginaNotasAluno()" class="nota" *ngFor="let nota of notas">
+                    <h3>{{ nota.nome }}</h3>
+                    <p>{{  nota.materia }}</p>
+                    <p>{{  nota.data }}</p>
+                  </div>
+                </section>
+              
+                <section class="minhas-materias">
+                  <h2>Minhas Matérias</h2>
+                  <div class="materia" *ngFor="let materia of materias">
+                    <h3>{{ materia.nome }}</h3>
+                  </div>
+                </section>
+              
+                <section class="cursos-extras">
+                  <h2>Cursos Extras</h2>
+                  <div class="curso" *ngFor="let curso of cursosExtras">
+                    <h3>{{ curso.nome }}</h3>
+                  </div>
+                </section>
+              </div>
   </main>
 

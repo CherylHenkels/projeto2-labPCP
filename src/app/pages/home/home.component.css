@@ -2,6 +2,7 @@ main{
     margin-left: 250px;
 }
 
+/* HOME ADM E DOCENTES */
 .alunos{
     display: flex;
     flex-wrap: wrap;
@@ -77,4 +78,54 @@ main{
     color: black;
   }
   
+  /* HOME ALUNOS */
+
+  .aluno-home {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
   
+  section {
+    background: #f5ebff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 25%;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .nota {
+    color: #333;
+    margin-bottom: 10px; 
+    cursor: pointer;
+    }
+
+    .nota p {   
+        margin: 0px;
+    }
+
+    .nota h3 {
+        margin: 0px;
+        color: black;
+        font-weight: bold;
+    }
+  
+   .materia, .curso {
+    background: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  h3 {
+    margin: 0 0 10px;
+  }
+  
+  p {
+    margin: 0;
+  }

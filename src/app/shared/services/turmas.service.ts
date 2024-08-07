@@ -8,7 +8,7 @@ import { TurmaInterface } from '../interfaces/turma.interface';
 })
 export class TurmasService {
   
-  private url = 'http://localhost:3000/usuarios';
+  private url = 'http://localhost:3000/turmas';
 
   constructor(private httpClient: HttpClient) {}
 

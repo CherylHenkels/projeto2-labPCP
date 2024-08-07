@@ -8,6 +8,12 @@ import { TurmasService } from '../../shared/services/turmas.service';
 import { EstatisticasInterface } from '../../shared/interfaces/estatisticas.interface';
 import { MenuLateralService } from '../../shared/services/menu-lateral.service';
 import { FormsModule } from '@angular/forms';
+import { CursosExtraService } from '../../shared/services/cursos-extra.service';
+import { MateriasService } from '../../shared/services/materias.service';
+import { NotasService } from '../../shared/services/notas.service';
+import { NotaInterface } from '../../shared/interfaces/nota.interface';
+import { CursosInterface } from '../../shared/interfaces/cursos.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -33,15 +39,26 @@ export class HomeComponent implements OnInit {
 
   alunosEncontrados: UsuarioInterface[] = [];
 
+  notas: NotaInterface[] = [];
+  materias: CursosInterface[] = [];
+  cursosExtras: CursosInterface[] = [];
+
   constructor(private alunoService: AlunoService,
               private docenteService: DocentesService, 
               private turmaService : TurmasService, 
-              private menuLateralService: MenuLateralService) { }
+              private materiasService : MateriasService,
+              private notasService : NotasService, 
+              private cursosExtraService : CursosExtraService, 
+              private menuLateralService: MenuLateralService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.carregarAlunos();
     this.carregarEstatisticas();
     console.log(this.alunos);
+    this.notasService.getNotas().subscribe(data => this.notas = data);
+    this.materiasService.getMaterias().subscribe(data => this.materias = data);
+    this.cursosExtraService.getCursosExtras().subscribe(data => this.cursosExtras = data);
   }
 
   carregarEstatisticas(): void{
@@ -80,6 +97,10 @@ buscaAluno() {
 selecionaPrimeiroAluno() {
   this.valorBusca = this.alunosEncontrados[0].nome;
   this.buscaAluno();
+}
+
+navegarPaginaNotasAluno() {
+   this.router.navigate(['/notas']);
 }
 
 get isAdmin(): boolean {
