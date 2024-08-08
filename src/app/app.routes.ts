@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { PaginaLoginComponent } from './pages/pagina-login/pagina-login.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CadastroDocenteComponent } from './pages/cadastro-docente/cadastro-docente.component';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,10 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'cadastro-docente',
+    component: CadastroDocenteComponent
   },
   // { path: 'inicio', component: PaginaLoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
