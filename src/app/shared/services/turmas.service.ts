@@ -12,6 +12,14 @@ export class TurmasService {
 
   constructor(private httpClient: HttpClient) {}
 
+   getTurma(id: string) {
+    return this.httpClient.get<TurmaInterface>(this.url + `/${id}`);
+  }
+
+  postTurma(turma: TurmaInterface) {
+    return this.httpClient.post<any>(this.url, turma);
+  }
+
   getTurmas(): Observable<Array<TurmaInterface>> {
     return this.httpClient.get<Array<TurmaInterface>>(this.url);
   }
