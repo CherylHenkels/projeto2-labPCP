@@ -11,6 +11,7 @@ export class DocentesService {
 
   constructor(private usuariosService: UsuariosService) { }
 
+ 
   getDocentesMatriculados(): Observable<UsuarioInterface[]> {
     return this.usuariosService.getUsuarios().pipe(
       map((usuarios: any[]) => usuarios.filter(usuario => usuario.perfil === 'Docente'))
@@ -21,5 +22,5 @@ export class DocentesService {
     return this.getDocentesMatriculados().pipe(
       map(docentes => docentes.length)
     );
-}
+  }
 }
