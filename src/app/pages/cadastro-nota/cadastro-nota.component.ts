@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ViaCepService } from '../../shared/services/via-cep.service';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuarioInterface } from '../../shared/interfaces/usuario.interface';
 import { UsuariosService } from '../../shared/services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
@@ -19,7 +18,7 @@ import { AlunoService } from '../../shared/services/aluno.service';
   templateUrl: './cadastro-nota.component.html',
   styleUrl: './cadastro-nota.component.css'
 })
-export class CadastroNotaComponent implements OnInit{
+export class CadastroNotaComponent implements OnInit {
 
   notaForm!: FormGroup;
   isEdit = false;
@@ -35,23 +34,23 @@ export class CadastroNotaComponent implements OnInit{
 
 
   constructor(private usuarioService: UsuariosService,
-              private activatedRoute: ActivatedRoute,
-              private menuLateralService: MenuLateralService,
-              private notaService: NotasService,
-              private docentesService: DocentesService,
-              private turmaService: TurmasService,
-              private alunoService: AlunoService
-             ) { }
+    private activatedRoute: ActivatedRoute,
+    private menuLateralService: MenuLateralService,
+    private notaService: NotasService,
+    private docentesService: DocentesService,
+    private turmaService: TurmasService,
+    private alunoService: AlunoService
+  ) { }
 
   ngOnInit(): void {
     this.idNota = this.activatedRoute.snapshot.params['id'];
     this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
 
-     if (this.idNota) {
+    if (this.idNota) {
       this.isEdit = true;
       this.notaService.getNota(this.idNota).subscribe((nota) => {
-        if(nota){
-        this.notaForm.patchValue(nota);
+        if (nota) {
+          this.notaForm.patchValue(nota);
         }
       });
     }
@@ -68,20 +67,20 @@ export class CadastroNotaComponent implements OnInit{
 
     this.turmaService.getTurmas().subscribe((turmas) => {
       this.turmas = turmas;
-    } );
+    });
 
     this.alunoService.getAlunosMatriculados().subscribe((alunos) => {
       this.alunos = alunos;
-    } );
+    });
 
     if (this.perfilLogado === 'Docente') {
-      const docenteNome = this.getNomeUsuarioLogado(); 
-      this.docentes = [{nome: docenteNome}];
+      const docenteNome = this.getNomeUsuarioLogado();
+      this.docentes = [{ nome: docenteNome }];
       this.notaForm.controls['docente'].disable();
     } else if (this.perfilLogado === 'Administrador') {
       this.docentesService.getDocentesMatriculados().subscribe((docentes) => {
         this.docentes = docentes;
-      } );
+      });
     }
 
 
@@ -97,7 +96,7 @@ export class CadastroNotaComponent implements OnInit{
 
       const novaNota: NotaInterface = {
         ...this.notaForm.value,
-        id:this.idNota ? this.idNota : this.gerarId(),
+        id: this.idNota ? this.idNota : this.gerarId(),
         professor: this.notaForm.controls['docente'].value,
       };
       this.notaService.postNota(novaNota).subscribe((retorno) => {
@@ -121,14 +120,14 @@ export class CadastroNotaComponent implements OnInit{
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Administrador';
   }
-  
+
   get isDocente(): boolean {
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Docente';
   }
-  
+
   get isAluno(): boolean {
-  let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
+    let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Aluno';
   }
 
