@@ -1,6 +1,6 @@
 <div class="cadastro-nota" *ngIf="isAdmin || isDocente">
     <h1>Cadastrar nova nota</h1>
-    <div>
+    <div class="turma">
         <label for="turma">Turma:</label>
         <!-- <select id="turma" formControlName="turma" (change)="onTurmaChange($event.target.value)"> -->
         <select id="turma" formControlName="turma">
@@ -11,34 +11,34 @@
     </div>
 
     <form [formGroup]="notaForm" class="container-grid" (ngSubmit)="salvarNota()">
-        <div>
+        <div class="col-2">
             <label for="docente">Docente:</label>
             <select id="docente" formControlName="docente">
             <option value="" disabled selected *ngIf="isAdmin ">Selecione uma opção</option>
             <option *ngFor="let docente of docentes">{{ docente.nome }}</option>
             </select>       
         </div>
-        <div>
+        <div class="col-2">
             <label for="materia">Nome da matéria:</label>
             <select id="materia" formControlName="materia">
                 <option value="" disabled selected>Selecione uma opção</option>
                 <option *ngFor="let materia of materias">{{ materia }}</option>
             </select>
         </div>
-        <div class="col-3">
+        <div class="col-2">
             <label for="nome">Nome da avaliação:</label>
             <input id="nome" formControlName="nome" type="text">
         </div>
-        <div>
-            <label for="data">Data:</label>
-            <input id="data" formControlName="data" type="date">
-        </div>
-        <div>
+        <div class="col-2">
             <label for="aluno">Aluno:</label>
             <select id="aluno" formControlName="aluno">
                 <option value="" disabled selected>Selecione uma opção</option>
                 <option *ngFor="let aluno of alunos">{{ aluno.nome }}</option>
             </select>
+        </div>
+        <div >
+            <label for="data">Data:</label>
+            <input id="data" formControlName="data" type="date">
         </div>
         <div>
             <label for="nota">Nota:</label>
