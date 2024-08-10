@@ -21,9 +21,10 @@ export class CadastroTurmaComponent implements OnInit{
 
   turmaForm!: FormGroup;
   isEdit = false;
-  docentes: any[] = [];
   idTurma: string | undefined;
   perfilLogado: string = '';
+  docentes: any[] = [];
+  
   // usuarioLogadoEmail: string = '';
 
   constructor(private viaCepService: ViaCepService ,
@@ -57,19 +58,21 @@ export class CadastroTurmaComponent implements OnInit{
       docente: new FormControl('', Validators.required),
     });
 
-    
 
     if (this.perfilLogado === 'Docente') {
       const docenteNome = this.getNomeUsuarioLogado(); 
       this.docentes = [{nome: docenteNome}];
       // this.turmaForm.controls['docente'].setValue(docenteNome);
-      this.docentes = [{nome: docenteNome}];
+      // this.docentes = [{nome: docenteNome}];
       this.turmaForm.controls['docente'].disable();
     } else if (this.perfilLogado === 'Administrador') {
       this.docentesService.getDocentesMatriculados().subscribe((docentes) => {
         this.docentes = docentes;
       } );
     }
+
+
+
   }
 
   salvarTurma() {

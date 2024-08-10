@@ -15,5 +15,13 @@ export class NotasService {
     return this.httpClient.get<Array<NotaInterface>>(this.url);
   }
 
+  getNota(id: string) {
+    return this.httpClient.get<NotaInterface>(this.url + `/${id}`);
+  }
+
+  postNota(nota: NotaInterface) {
+    return this.httpClient.post<any>(this.url, nota);
+  }
+
 
 }
