@@ -20,6 +20,7 @@
         <div>
             <label for="docente">Docente:</label>
             <select id="docente" formControlName="docente">
+            <option value="" disabled selected *ngIf="isAdmin ">Selecione uma opção</option>
             <option *ngFor="let docente of docentes">{{ docente.nome }}</option>
             </select>       
         </div>
