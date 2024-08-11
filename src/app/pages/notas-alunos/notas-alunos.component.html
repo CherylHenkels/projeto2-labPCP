@@ -1,4 +1,7 @@
-<div class="notas-container">
+<div class="notas-container" *ngIf="isAluno">
+  <h1>Notas do Aluno</h1>
+  <h4>{{alunoName}}</h4>
+
     <h2>Histórico de Notas</h2>
     <div *ngFor="let materia of agruparPorMateria()">
       <h3>{{ materia.nome }}</h3>

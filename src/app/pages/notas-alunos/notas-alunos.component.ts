@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TurmaInterface } from '../../shared/interfaces/turma.interface';
 import { NotaInterface } from '../../shared/interfaces/nota.interface';
 import { TurmasService } from '../../shared/services/turmas.service';
+import { MenuLateralService } from '../../shared/services/menu-lateral.service';
 // import { AuthService } from '../services/auth.service';
 
 
@@ -20,17 +21,20 @@ export class NotasAlunosComponent implements OnInit{
   notas: any[] = [];
   turmas: TurmaInterface[] = [];
   alunoName: string = '';
+  perfilLogado: string = '';
   
 
   constructor(
     private notasService: NotasService,
     private turmaService: TurmasService,
+    private menuLateralService: MenuLateralService,
     private activatedRoute: ActivatedRoute,
     // private authService: AuthService
   ) { }
 
   ngOnInit(): void {
      this.alunoName = this.getNameUsuarioLogado();
+     this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     // console.log("Aluno name " + this.alunoName);
     this.getNotasAluno();
 
@@ -100,6 +104,18 @@ export class NotasAlunosComponent implements OnInit{
     getNameUsuarioLogado(): string {
       const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
       return usuarioLogado.nome || '';
+    }
+
+    get isAdmin(): boolean {
+      return this.perfilLogado === 'Administrador';
+    }
+    
+    get isDocente(): boolean {
+      return this.perfilLogado === 'Docente';
+    }
+    
+    get isAluno(): boolean {
+      return this.perfilLogado === 'Aluno';
     }
 
 }
