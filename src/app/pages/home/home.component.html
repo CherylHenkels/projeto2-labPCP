@@ -46,7 +46,8 @@
             <div *ngIf="isAluno" class="aluno-home">
                 <section class="minhas-notas">
                   <h2>Minhas Notas</h2>
-                  <div (click)="navegarPaginaNotasAluno()" class="nota" *ngFor="let nota of notas">
+                  <div (click)="navegarPaginaNotasAluno()" class="nota" *ngFor="let nota of notas | slice:0:3">
+                    <!-- slice seleciona um subconjunto da notas [0, 3) -->
                     <h3>{{ nota.nome }}</h3>
                     <p>{{  nota.materia }}</p>
                     <p>{{  nota.data }}</p>

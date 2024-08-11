@@ -56,7 +56,7 @@ export class CadastroNotaComponent implements OnInit {
     }
 
     this.notaForm = new FormGroup({
-      //  turma: new FormControl('', Validators.required),
+      turma: new FormControl(''),
       docente: new FormControl('', Validators.required),
       materia: new FormControl('', Validators.required),
       nome: new FormControl('', Validators.required),

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NotaInterface } from '../interfaces/nota.interface';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,14 @@ export class NotasService {
 
   getNota(id: string) {
     return this.httpClient.get<NotaInterface>(this.url + `/${id}`);
+  }
+
+  getNotasByAluno(alunoId: string): Observable<NotaInterface[]> {
+    return this.httpClient.get<NotaInterface[]>(`${this.url}?alunoId=${alunoId}`);
+  }
+
+  getNotasByAlunoName(alunoName: string): Observable<NotaInterface[]> {
+    return this.httpClient.get<NotaInterface[]>(`${this.url}?aluno=${alunoName}`);
   }
 
   postNota(nota: NotaInterface) {

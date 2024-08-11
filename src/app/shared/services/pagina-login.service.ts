@@ -12,7 +12,7 @@ export class PaginaLoginService {
 
   private url = 'http://localhost:3000/usuarios';
 
-  login(usuario: { email: string, senha: string, perfil: string, nome: string }) {
+  login(usuario: { id: string, email: string, senha: string, perfil: string, nome: string }) {
     sessionStorage.setItem('usuarioLogado', JSON.stringify(usuario));
   }
 

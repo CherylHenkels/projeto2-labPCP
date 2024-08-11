@@ -24,6 +24,7 @@ export class TurmasService {
     return this.httpClient.get<Array<TurmaInterface>>(this.url);
   }
 
+
   numeroTurmasCadastradas(): Observable<number> {
     return this.getTurmas().pipe(
       map(turmas => turmas.length)

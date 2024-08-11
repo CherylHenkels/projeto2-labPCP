@@ -4,5 +4,5 @@ export interface TurmaInterface {
     dataInicio: string;
     dataTermino: string;
     horario: string;
-    professor: string[];
+    professor: string;
   }

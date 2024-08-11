@@ -5,6 +5,7 @@ import { CadastroDocenteComponent } from './pages/cadastro-docente/cadastro-doce
 import { CadastroAlunoComponent } from './pages/cadastro-aluno/cadastro-aluno.component';
 import { CadastroTurmaComponent } from './pages/cadastro-turma/cadastro-turma.component';
 import { CadastroNotaComponent } from './pages/cadastro-nota/cadastro-nota.component';
+import { NotasAlunosComponent } from './pages/notas-alunos/notas-alunos.component';
 
 export const routes: Routes = [
   {
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'cadastro-nota',
     component: CadastroNotaComponent
+  },
+  {
+    path: 'notas',
+    component: NotasAlunosComponent
   },
   // { path: 'inicio', component: PaginaLoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
