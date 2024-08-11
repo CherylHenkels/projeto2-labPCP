@@ -59,7 +59,6 @@ export class HomeComponent implements OnInit {
     this.carregarAlunos();
     this.carregarEstatisticas();
     console.log(this.alunos);
-    // this.notasService.getNotas().subscribe(data => this.notas = data);
      this.getNotasAluno();
 
     this.materiasService.getMaterias().subscribe(data => this.materias = data);
@@ -68,9 +67,7 @@ export class HomeComponent implements OnInit {
 
   getNotasAluno(){
     this.notasService.getNotasByAlunoName(this.alunoName).subscribe((notas) => {
-    //   console.log("Nome do aluno: " + this.alunoName);
-    //  console.log(notas);
-      this.notas = notas.sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime());
+      this.notas = notas.sort((a, b) =>  new Date(b.data).getTime() - new Date(a.data).getTime());
     });
   }
 

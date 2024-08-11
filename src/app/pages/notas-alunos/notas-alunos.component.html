@@ -5,8 +5,6 @@
     <h2>Histórico de Notas</h2>
     <div *ngFor="let materia of agruparPorMateria()">
       <h3>{{ materia.nome }}</h3>
-       <!-- <div *ngFor="let materia of agruparPorMateria()">
-      <h3>{{ materia.nome }}</h3> -->
       <table>
         <thead>
           <tr>
@@ -28,25 +26,4 @@
         </tbody>
       </table>
     </div>
-    <!-- <div *ngFor="let grupo of agruparNotasPorTurma(turmas, notas)">
-      <h3>{{ grupo.turma }} - Docente: {{ grupo.docente }}</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Nome da Avaliação</th>
-            <th>Data</th>
-            <th>Nota</th>
-            <th>Aluno</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let avaliacao of grupo.avaliacoes">
-            <td>{{ avaliacao.nome }}</td>
-            <td>{{ avaliacao.data | date }}</td>
-            <td>{{ avaliacao.nota }}</td>
-            <td>{{ avaliacao.aluno }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
   </div>

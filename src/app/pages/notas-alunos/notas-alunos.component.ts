@@ -6,7 +6,7 @@ import { TurmaInterface } from '../../shared/interfaces/turma.interface';
 import { NotaInterface } from '../../shared/interfaces/nota.interface';
 import { TurmasService } from '../../shared/services/turmas.service';
 import { MenuLateralService } from '../../shared/services/menu-lateral.service';
-// import { AuthService } from '../services/auth.service';
+
 
 
 @Component({
@@ -16,26 +16,24 @@ import { MenuLateralService } from '../../shared/services/menu-lateral.service';
   templateUrl: './notas-alunos.component.html',
   styleUrl: './notas-alunos.component.css'
 })
-export class NotasAlunosComponent implements OnInit{
+export class NotasAlunosComponent implements OnInit {
 
   notas: any[] = [];
   turmas: TurmaInterface[] = [];
   alunoName: string = '';
   perfilLogado: string = '';
-  
+
 
   constructor(
     private notasService: NotasService,
     private turmaService: TurmasService,
     private menuLateralService: MenuLateralService,
-    private activatedRoute: ActivatedRoute,
-    // private authService: AuthService
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-     this.alunoName = this.getNameUsuarioLogado();
-     this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
-    // console.log("Aluno name " + this.alunoName);
+    this.alunoName = this.getNameUsuarioLogado();
+    this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     this.getNotasAluno();
 
     this.turmaService.getTurmas().subscribe((turmas) => {
@@ -43,79 +41,52 @@ export class NotasAlunosComponent implements OnInit{
     });
   }
 
-  getNotasAluno(){
+  getNotasAluno() {
     this.notasService.getNotasByAlunoName(this.alunoName).subscribe((notas) => {
-    //   console.log("Nome do aluno: " + this.alunoName);
-    //  console.log(notas);
+      ;
       this.notas = notas.sort((a, b) => new Date(a.data).getTime() - new Date(b.data).getTime());
     });
   }
 
   agruparPorMateria() {
     const materias = new Map<string, any>();
-  
+
     this.notas.forEach(nota => {
       const materiaNome = nota.materia;
-  
+
       if (!materias.has(materiaNome)) {
         materias.set(materiaNome, { nome: materiaNome, notas: [] });
       }
-  
+
       materias.get(materiaNome).notas.push(nota);
     });
-  
+
     return Array.from(materias.values());
   }
 
-  // agruparPorDocente() {
-  //   const docentes= new Map<string, any>();
-  
-  //   this.notas.forEach(nota => {
-  //     const docenteNome = nota.docente;
-  
-  //     if (!docentes.has(docenteNome)) {
-  //       docentes.set(docenteNome, { nome: docenteNome, notas: [] });
-  //     }
-  
-  //     docentes.get(docenteNome).notas.push(nota);
-  //   });
-  
-  //   return Array.from(docentes.values());
-  // }
-
-  // agruparNotasPorTurma(turmas: TurmaInterface[], notas: NotaInterface[]): any[] {
-  //   const notasAgrupadas = turmas.map(turma => {
-  //     return {
-  //       turma: turma.nome,
-  //       docente: turma.professor,
-  //       avaliacoes: notas.filter(nota => nota.docente === turma.professor)
-  //     };
-  //   });
-  
-  //   return notasAgrupadas;
-  // }
 
 
-    getIdUsuarioLogado(): string {
-      const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
-      return usuarioLogado.id || '';
-    }
 
-    getNameUsuarioLogado(): string {
-      const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
-      return usuarioLogado.nome || '';
-    }
+  getIdUsuarioLogado(): string {
+    const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
+    return usuarioLogado.id || '';
+  }
 
-    get isAdmin(): boolean {
-      return this.perfilLogado === 'Administrador';
-    }
-    
-    get isDocente(): boolean {
-      return this.perfilLogado === 'Docente';
-    }
-    
-    get isAluno(): boolean {
-      return this.perfilLogado === 'Aluno';
-    }
+  getNameUsuarioLogado(): string {
+    const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
+    return usuarioLogado.nome || '';
+  }
+
+  get isAdmin(): boolean {
+    return this.perfilLogado === 'Administrador';
+  }
+
+  get isDocente(): boolean {
+    return this.perfilLogado === 'Docente';
+  }
+
+  get isAluno(): boolean {
+    return this.perfilLogado === 'Aluno';
+  }
 
 }
