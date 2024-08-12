@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioInterface } from '../interfaces/usuario.interface';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,13 @@ export class UsuariosService {
     return this.httpClient.get<Array<UsuarioInterface>>(this.url);
   }
 
-  getUsuario(id: string) {
-    return this.httpClient.get<UsuarioInterface>(this.url + `/${id}`);
+  // getUsuario(id: string): Observable<UsuarioInterface> {
+  //   return this.httpClient.get<UsuarioInterface>(this.url + `/${id}`);
+  // }
+
+  getUsuario(id: string): Observable<UsuarioInterface> {
+    const urlCompleta = `${this.url}/${id}`; // Constrói a URL completa para a requisição
+    return this.httpClient.get<UsuarioInterface>(urlCompleta); // Faz a requisição GET e retorna um Observable
   }
 
   postUsuario(usuario: UsuarioInterface) {
@@ -27,7 +33,7 @@ export class UsuariosService {
     return this.httpClient.put<any>(this.url + `/${usuario.id}`, usuario);
   }
 
-  delete(id: string) {
+  deleteUsuario(id: string) {
     return this.httpClient.delete<any>(this.url + `/${id}`);
   }
 }

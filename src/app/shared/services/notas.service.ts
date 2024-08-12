@@ -24,8 +24,16 @@ export class NotasService {
     return this.httpClient.get<NotaInterface[]>(`${this.url}?alunoId=${alunoId}`);
   }
 
+  getNotasByDocente(docenteId: string): Observable<NotaInterface[]> {
+    return this.httpClient.get<NotaInterface[]>(`${this.url}?docenteId=${docenteId}`);
+  }
+
   getNotasByAlunoName(alunoName: string): Observable<NotaInterface[]> {
     return this.httpClient.get<NotaInterface[]>(`${this.url}?aluno=${alunoName}`);
+  }
+
+  getNotasByDocenteName(docenteName: string): Observable<NotaInterface[]> {
+    return this.httpClient.get<NotaInterface[]>(`${this.url}?docente=${docenteName}`);
   }
 
   postNota(nota: NotaInterface) {

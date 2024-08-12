@@ -6,6 +6,8 @@ import { UsuarioInterface } from '../../shared/interfaces/usuario.interface';
 import { UsuariosService } from '../../shared/services/usuarios.service';
 import { ActivatedRoute } from '@angular/router';
 import { MenuLateralService } from '../../shared/services/menu-lateral.service';
+import { TurmasService } from '../../shared/services/turmas.service';
+import { NotasService } from '../../shared/services/notas.service';
 
 @Component({
   selector: 'app-cadastro-docente',
@@ -20,6 +22,7 @@ export class CadastroDocenteComponent implements OnInit{
 
   isEdit = false;
   idUsuario: string | undefined;
+  nomeUsuario: string | undefined;
 
   generos = ['','Masculino', 'Feminino', 'Outro'];
   estadosCivis = ['','Solteiro(a)', 'Casado(a)', 'Divorciado(a)', 'Viúvo(a)'];
@@ -29,6 +32,8 @@ export class CadastroDocenteComponent implements OnInit{
 
   constructor(private viaCepService: ViaCepService ,
               private usuarioService: UsuariosService,
+              private turmasService: TurmasService,
+              private notasService: NotasService,
               private activatedRoute: ActivatedRoute,
               private menuLateralService: MenuLateralService
              ) { }
@@ -38,15 +43,37 @@ export class CadastroDocenteComponent implements OnInit{
 
     if (this.idUsuario) {
       this.isEdit = true;
+      console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
         if(usuario){
-        this.docenteForm.patchValue(usuario);
+          console.log("Usuario: " + JSON.stringify(usuario, null, 2));
+        this.docenteForm.patchValue({
+          nome: usuario.nome || '', 
+          genero: usuario.genero || '',
+          dataNascimento: usuario.dataNascimento || '',
+          cpf: usuario.cpf || '',
+          rg: usuario.rg || '',
+          estadoCivil: usuario.estadoCivil || '',    
+          telefone: usuario.telefone || '', 
+          email: usuario.email || '',     
+          senha: usuario.senha || '',
+          naturalidade: usuario.naturalidade || '',
+          cep: usuario.endereco?.cep || '',
+          cidade: usuario.endereco?.cidade || '',
+          estado: usuario.endereco?.estado || '',
+          logradouro: usuario.endereco?.logradouro || '',
+          numero: usuario.endereco?.numero || '',
+          complemento: usuario.endereco?.complemento || '',
+          bairro: usuario.endereco?.bairro || '',
+          pontoReferencia: usuario.endereco?.pontoReferencia || '',
+          materias: usuario.materias || []   
+        });
         }
       });
     }
 
     this.docenteForm = new FormGroup({
-      nomeCompleto: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]),
+      nome: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]),
       genero: new FormControl('', Validators.required),
       dataNascimento: new FormControl('', Validators.required),
       cpf: new FormControl('', [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)]),
@@ -101,6 +128,61 @@ export class CadastroDocenteComponent implements OnInit{
       window.alert('Cheque os campos obrigatórios');
     }
   }
+
+  editarDocente(): void {
+    if (this.isEdit && this.docenteForm.valid) {
+      const docenteEditado: UsuarioInterface = {
+        ...this.docenteForm.value,
+        perfil: 'Docente', 
+        id: this.idUsuario,
+        idade: this.calcularIdade(new Date(this.docenteForm.value.dataNascimento)),
+      };
+      this.usuarioService.putUsuario(docenteEditado).subscribe(() => {
+        window.alert('Docente editado com sucesso');
+      });
+    } else {
+      window.alert('Cheque os campos obrigatórios');
+    }
+  }
+  
+  deletarDocente(): void {
+    if (this.isEdit && this.idUsuario) {
+  
+      const idDocente = this.idUsuario;
+
+      const nomeDocente = this.docenteForm.get('nome')?.value;
+      console.log(nomeDocente);
+      this.turmasService.getTurmasByDocenteName(nomeDocente).subscribe(turmas => {
+        if (turmas.length > 0) {
+          console.log(turmas);
+          window.alert('O docente não pode ser deletado porque possui turmas vinculadas.');
+          return; // Sai da função se há turmas vinculadas
+        }
+  
+        // Se não há turmas vinculadas, verifique as avaliações
+        this.notasService.getNotasByDocenteName(nomeDocente).subscribe(avaliacoes => {
+          if (avaliacoes.length > 0) {
+            console.log(avaliacoes);
+            window.alert('O docente não pode ser deletado porque possui avaliações vinculadas.');
+            return; // Sai da função se há avaliações vinculadas
+          }
+  
+          // Se não há turmas ou avaliações vinculadas, deletar o docente
+          this.usuarioService.deleteUsuario(idDocente).subscribe(() => {
+            window.alert('Docente deletado com sucesso.');
+            // Navegar para a lista de docentes ou outra página, se necessário
+            // this.router.navigate(['/lista-docentes']);
+          });
+        });
+      });
+    }
+  }
+//       this.usuarioService.deleteUsuario(this.idUsuario).subscribe(() => {
+//         window.alert('Docente deletado com sucesso');
+//       });
+//     }
+//   }
+// }
 
   calcularIdade(dataNascimento: Date): number {
     const hoje = new Date();

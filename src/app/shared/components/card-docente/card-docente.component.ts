@@ -23,8 +23,8 @@ export class CardDocenteComponent {
     private menuLateralService: MenuLateralService
   ) { }
 
-  verMais(): void {
-    this.router.navigate(['/cadastro-docente']);
+  verMais(id:string): void {
+    this.router.navigate(['/cadastro-docente', id]);
   }
 
 

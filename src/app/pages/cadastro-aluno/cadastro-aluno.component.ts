@@ -49,7 +49,7 @@ export class CadastroAlunoComponent implements OnInit{
     }
 
     this.alunoForm = new FormGroup({
-      nomeCompleto: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]),
+      nome: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]),
       genero: new FormControl('', Validators.required),
       dataNascimento: new FormControl('', Validators.required),
       cpf: new FormControl('', [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)]),

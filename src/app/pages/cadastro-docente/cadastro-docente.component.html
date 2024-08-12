@@ -2,8 +2,8 @@
     <h1>Cadastrar novo docente</h1>
     <form [formGroup]="docenteForm" class="container-grid" (ngSubmit)="salvarDocente()">
     <div class="col-3">
-        <label for="nomeCompleto">Nome Completo:</label>
-        <input id="nomeCompleto" formControlName="nomeCompleto" type="text">
+        <label for="nome">Nome Completo:</label>
+        <input id="nome" formControlName="nome" type="text">
       </div>
       <div>
        <label for="genero">Gênero:</label>
@@ -86,8 +86,8 @@
 
       <div class="botoes">
         <button type="submit" [disabled]="isEdit">Salvar</button>
-        <button type="button" [disabled]="!isEdit">Editar</button>
-        <button type="button" [disabled]="!isEdit">Deletar</button>
+        <button type="button" (click)="editarDocente()" [disabled]="!isEdit">Editar</button>
+        <button type="button" (click)="deletarDocente()" [disabled]="!isEdit">Deletar</button>
       </div>
     </form>
   </div>
