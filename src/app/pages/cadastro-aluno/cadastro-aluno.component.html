@@ -86,8 +86,8 @@
 
       <div class="botoes">
         <button type="submit" [disabled]="isEdit">Salvar</button>
-        <button type="button" [disabled]="!isEdit">Editar</button>
-        <button type="button" [disabled]="!isEdit">Deletar</button>
+        <button type="button" (click)="editarAluno()" [disabled]="!isEdit">Editar</button>
+        <button type="button" (click)="deletarAluno()"[disabled]="!isEdit">Deletar</button>
       </div>
     </form>
   </div>

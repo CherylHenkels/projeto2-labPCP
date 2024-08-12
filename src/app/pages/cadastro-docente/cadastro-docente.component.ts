@@ -43,7 +43,7 @@ export class CadastroDocenteComponent implements OnInit {
 
     if (this.idUsuario) {
       this.isEdit = true;
-      console.log("idUsuario: " + this.idUsuario);
+      // console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
         if (usuario) {
           console.log("Usuario: " + JSON.stringify(usuario, null, 2));

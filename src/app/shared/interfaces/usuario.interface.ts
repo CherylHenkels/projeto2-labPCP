@@ -21,5 +21,6 @@ export interface UsuarioInterface {
       bairro?: string;
       pontoReferencia?: string;
     materias?: string[];
+    turmas?: string[];
   }
   

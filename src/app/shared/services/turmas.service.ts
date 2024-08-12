@@ -39,5 +39,9 @@ export class TurmasService {
   getTurmasByDocenteName(docenteName: string): Observable<TurmaInterface[]> {
     return this.httpClient.get<TurmaInterface[]>(`${this.url}?professor=${docenteName}`);
   }
+
+  getTurmasByAlunoName(alunoName: string): Observable<TurmaInterface[]> {
+    return this.httpClient.get<TurmaInterface[]>(`${this.url}?aluno=${alunoName}`);
+  }
   
 }

@@ -30,6 +30,10 @@ export const routes: Routes = [
     component: CadastroAlunoComponent
   },
   {
+    path: 'cadastro-aluno/:id',
+    component: CadastroAlunoComponent
+  },
+  {
     path: 'cadastro-turma',
     component: CadastroTurmaComponent
   },
