@@ -1,14 +1,13 @@
 <div class="cadastro-nota" *ngIf="isAdmin || isDocente">
     <h1>Cadastrar nova nota</h1>
-    <div class="turma">
-        <label for="turma">Turma:</label>
-        <select id="turma" formControlName="turma">
-            <option value="" disabled selected>Selecione uma opção</option>
-            <option *ngFor="let turma of turmas">{{ turma.nome }}</option>
-        </select>
-    </div>
-
     <form [formGroup]="notaForm" class="container-grid" (ngSubmit)="salvarNota()">
+        <div class="col-4">
+            <label for="turma">Turma:</label>
+            <select id="turma" formControlName="turma">
+                <option value="" disabled selected>Selecione uma opção</option>
+                <option *ngFor="let turma of turmas">{{ turma.nome }}</option>
+            </select>
+        </div>
         <div class="col-2">
             <label for="docente">Docente:</label>
             <select id="docente" formControlName="docente">

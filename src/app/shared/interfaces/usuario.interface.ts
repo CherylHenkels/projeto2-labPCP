@@ -6,7 +6,7 @@ export interface UsuarioInterface {
     // perfil: string;
     // idade: number;
     // telefone: string;}
-    id: number;
+    id: string;
     nome: string;
     email: string;
     senha: string;

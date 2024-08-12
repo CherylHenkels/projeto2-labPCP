@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 export class PaginaLoginComponent {
 
   login = {
+    id: '',
     email: '',
     senha: '',
     perfil: '',
@@ -37,7 +38,7 @@ export class PaginaLoginComponent {
 
             this.login.perfil = perfil.perfil;
             this.login.nome = perfil.nome;
-            
+            this.login.id = perfil.id;
 
           } else {
             console.error('Usuário não encontrado');

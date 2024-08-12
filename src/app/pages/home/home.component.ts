@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   notas: NotaInterface[] = [];
   materias: CursosInterface[] = [];
   cursosExtras: CursosInterface[] = [];
+  alunoName: string = '';
+
 
   constructor(private alunoService: AlunoService,
               private docenteService: DocentesService, 
@@ -53,12 +55,20 @@ export class HomeComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit(): void {
+    this.alunoName = this.getNameUsuarioLogado();
     this.carregarAlunos();
     this.carregarEstatisticas();
     console.log(this.alunos);
-    this.notasService.getNotas().subscribe(data => this.notas = data);
+     this.getNotasAluno();
+
     this.materiasService.getMaterias().subscribe(data => this.materias = data);
     this.cursosExtraService.getCursosExtras().subscribe(data => this.cursosExtras = data);
+  }
+
+  getNotasAluno(){
+    this.notasService.getNotasByAlunoName(this.alunoName).subscribe((notas) => {
+      this.notas = notas.sort((a, b) =>  new Date(b.data).getTime() - new Date(a.data).getTime());
+    });
   }
 
   carregarEstatisticas(): void{
@@ -101,6 +111,11 @@ selecionaPrimeiroAluno() {
 
 navegarPaginaNotasAluno() {
    this.router.navigate(['/notas']);
+}
+
+getNameUsuarioLogado(): string {
+  const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
+  return usuarioLogado.nome || '';
 }
 
 get isAdmin(): boolean {
