@@ -18,9 +18,9 @@ export class CardDocenteComponent {
   } | undefined;
 
 
-constructor(
-  private router:Router, 
-  private menuLateralService: MenuLateralService
+  constructor(
+    private router: Router,
+    private menuLateralService: MenuLateralService
   ) { }
 
   verMais(): void {
@@ -32,14 +32,14 @@ constructor(
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Administrador';
   }
-  
+
   get isDocente(): boolean {
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Docente';
   }
-  
+
   get isAluno(): boolean {
-  let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
+    let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Aluno';
   }
 

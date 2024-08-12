@@ -15,33 +15,33 @@
     justify-content: center;
 }
 
-.resultados-busca{
+.resultados-busca {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .pesquisa {
     margin-top: 50px;
-    
-  }
 
-  .pesquisa input {
+}
+
+.pesquisa input {
     display: block;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-  }
-  
-  .campo-pesquisa {
+}
+
+.campo-pesquisa {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  .campo-pesquisa button {
+}
+
+.campo-pesquisa button {
     padding: 10px;
     background-color: #333;
     color: white;
@@ -49,10 +49,4 @@
     border-radius: 4px;
     cursor: pointer;
     margin-left: 0px;
-  }
-  
-  
-
-
-  
-  
+}
