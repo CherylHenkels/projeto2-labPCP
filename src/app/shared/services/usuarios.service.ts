@@ -16,10 +16,6 @@ export class UsuariosService {
     return this.httpClient.get<Array<UsuarioInterface>>(this.url);
   }
 
-  // getUsuario(id: string): Observable<UsuarioInterface> {
-  //   return this.httpClient.get<UsuarioInterface>(this.url + `/${id}`);
-  // }
-
   getUsuario(id: string): Observable<UsuarioInterface> {
     const urlCompleta = `${this.url}/${id}`; // Constrói a URL completa para a requisição
     return this.httpClient.get<UsuarioInterface>(urlCompleta); // Faz a requisição GET e retorna um Observable

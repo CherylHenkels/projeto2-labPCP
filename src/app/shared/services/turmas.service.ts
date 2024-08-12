@@ -30,10 +30,6 @@ export class TurmasService {
     );
   }
 
-  // getTurmasByDocente(docenteId: string): Observable<TurmaInterface[]> {
-  //   return this.httpClient.get<TurmaInterface[]>(`${this.url}/turmas?professor=${docenteId}`);
-  // }
-
   getTurmasByDocente(docenteId: string): Observable<TurmaInterface[]> {
     return this.httpClient.get<TurmaInterface[]>(`${this.url}`, {
       params: { professor: docenteId }

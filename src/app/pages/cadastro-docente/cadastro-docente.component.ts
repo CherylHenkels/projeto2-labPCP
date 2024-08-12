@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {  FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ViaCepService } from '../../shared/services/via-cep.service';
 import { UsuarioInterface } from '../../shared/interfaces/usuario.interface';
 import { UsuariosService } from '../../shared/services/usuarios.service';
@@ -16,27 +16,27 @@ import { NotasService } from '../../shared/services/notas.service';
   templateUrl: './cadastro-docente.component.html',
   styleUrl: './cadastro-docente.component.css'
 })
-export class CadastroDocenteComponent implements OnInit{
-  
+export class CadastroDocenteComponent implements OnInit {
+
   docenteForm!: FormGroup;
 
   isEdit = false;
   idUsuario: string | undefined;
   nomeUsuario: string | undefined;
 
-  generos = ['','Masculino', 'Feminino', 'Outro'];
-  estadosCivis = ['','Solteiro(a)', 'Casado(a)', 'Divorciado(a)', 'Viúvo(a)'];
+  generos = ['', 'Masculino', 'Feminino', 'Outro'];
+  estadosCivis = ['', 'Solteiro(a)', 'Casado(a)', 'Divorciado(a)', 'Viúvo(a)'];
   materias = ['Matemática', 'Física', 'Química', 'História', 'Geografia', 'Biologia'];
 
 
 
-  constructor(private viaCepService: ViaCepService ,
-              private usuarioService: UsuariosService,
-              private turmasService: TurmasService,
-              private notasService: NotasService,
-              private activatedRoute: ActivatedRoute,
-              private menuLateralService: MenuLateralService
-             ) { }
+  constructor(private viaCepService: ViaCepService,
+    private usuarioService: UsuariosService,
+    private turmasService: TurmasService,
+    private notasService: NotasService,
+    private activatedRoute: ActivatedRoute,
+    private menuLateralService: MenuLateralService
+  ) { }
 
   ngOnInit(): void {
     this.idUsuario = this.activatedRoute.snapshot.params['id'];
@@ -45,29 +45,29 @@ export class CadastroDocenteComponent implements OnInit{
       this.isEdit = true;
       console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
-        if(usuario){
+        if (usuario) {
           console.log("Usuario: " + JSON.stringify(usuario, null, 2));
-        this.docenteForm.patchValue({
-          nome: usuario.nome || '', 
-          genero: usuario.genero || '',
-          dataNascimento: usuario.dataNascimento || '',
-          cpf: usuario.cpf || '',
-          rg: usuario.rg || '',
-          estadoCivil: usuario.estadoCivil || '',    
-          telefone: usuario.telefone || '', 
-          email: usuario.email || '',     
-          senha: usuario.senha || '',
-          naturalidade: usuario.naturalidade || '',
-          cep: usuario.endereco?.cep || '',
-          cidade: usuario.endereco?.cidade || '',
-          estado: usuario.endereco?.estado || '',
-          logradouro: usuario.endereco?.logradouro || '',
-          numero: usuario.endereco?.numero || '',
-          complemento: usuario.endereco?.complemento || '',
-          bairro: usuario.endereco?.bairro || '',
-          pontoReferencia: usuario.endereco?.pontoReferencia || '',
-          materias: usuario.materias || []   
-        });
+          this.docenteForm.patchValue({
+            nome: usuario.nome || '',
+            genero: usuario.genero || '',
+            dataNascimento: usuario.dataNascimento || '',
+            cpf: usuario.cpf || '',
+            rg: usuario.rg || '',
+            estadoCivil: usuario.estadoCivil || '',
+            telefone: usuario.telefone || '',
+            email: usuario.email || '',
+            senha: usuario.senha || '',
+            naturalidade: usuario.naturalidade || '',
+            cep: usuario.cep || '',
+            cidade: usuario.cidade || '',
+            estado: usuario.estado || '',
+            logradouro: usuario.logradouro || '',
+            numero: usuario.numero || '',
+            complemento: usuario.complemento || '',
+            bairro: usuario.bairro || '',
+            pontoReferencia: usuario.pontoReferencia || '',
+            materias: usuario.materias || []
+          });
         }
       });
     }
@@ -117,9 +117,9 @@ export class CadastroDocenteComponent implements OnInit{
     if (this.docenteForm.valid) {
       const novoDocente: UsuarioInterface = {
         ...this.docenteForm.value,
-        perfil: 'Docente',  
+        perfil: 'Docente',
         idade: this.calcularIdade(new Date(this.docenteForm.value.dataNascimento)),
-        id:this.idUsuario ? this.idUsuario : this.gerarId()
+        id: this.idUsuario ? this.idUsuario : this.gerarId()
       };
       this.usuarioService.postUsuario(novoDocente).subscribe((retorno) => {
         window.alert('Usuário criado com sucesso');
@@ -133,7 +133,7 @@ export class CadastroDocenteComponent implements OnInit{
     if (this.isEdit && this.docenteForm.valid) {
       const docenteEditado: UsuarioInterface = {
         ...this.docenteForm.value,
-        perfil: 'Docente', 
+        perfil: 'Docente',
         id: this.idUsuario,
         idade: this.calcularIdade(new Date(this.docenteForm.value.dataNascimento)),
       };
@@ -144,10 +144,10 @@ export class CadastroDocenteComponent implements OnInit{
       window.alert('Cheque os campos obrigatórios');
     }
   }
-  
+
   deletarDocente(): void {
     if (this.isEdit && this.idUsuario) {
-  
+
       const idDocente = this.idUsuario;
 
       const nomeDocente = this.docenteForm.get('nome')?.value;
@@ -158,7 +158,7 @@ export class CadastroDocenteComponent implements OnInit{
           window.alert('O docente não pode ser deletado porque possui turmas vinculadas.');
           return; // Sai da função se há turmas vinculadas
         }
-  
+
         // Se não há turmas vinculadas, verifique as avaliações
         this.notasService.getNotasByDocenteName(nomeDocente).subscribe(avaliacoes => {
           if (avaliacoes.length > 0) {
@@ -166,23 +166,16 @@ export class CadastroDocenteComponent implements OnInit{
             window.alert('O docente não pode ser deletado porque possui avaliações vinculadas.');
             return; // Sai da função se há avaliações vinculadas
           }
-  
+
           // Se não há turmas ou avaliações vinculadas, deletar o docente
           this.usuarioService.deleteUsuario(idDocente).subscribe(() => {
             window.alert('Docente deletado com sucesso.');
-            // Navegar para a lista de docentes ou outra página, se necessário
-            // this.router.navigate(['/lista-docentes']);
           });
         });
       });
     }
   }
-//       this.usuarioService.deleteUsuario(this.idUsuario).subscribe(() => {
-//         window.alert('Docente deletado com sucesso');
-//       });
-//     }
-//   }
-// }
+
 
   calcularIdade(dataNascimento: Date): number {
     const hoje = new Date();
@@ -202,14 +195,14 @@ export class CadastroDocenteComponent implements OnInit{
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Administrador';
   }
-  
+
   get isDocente(): boolean {
     let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Docente';
   }
-  
+
   get isAluno(): boolean {
-  let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
+    let perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
     return perfilLogado === 'Aluno';
   }
 

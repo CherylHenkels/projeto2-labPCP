@@ -76,10 +76,6 @@ export class CadastroAlunoComponent implements OnInit{
   }
 
 
-
-  
-
-
   buscarCep() {
     const cep = this.alunoForm.get('cep')?.value;
     if (cep) {

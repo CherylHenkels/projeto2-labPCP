@@ -1,11 +1,4 @@
 export interface UsuarioInterface {
-    // id: string;
-    // nome: string;
-    // email: string;
-    // senha: string;
-    // perfil: string;
-    // idade: number;
-    // telefone: string;}
     id: string;
     nome: string;
     email: string;
@@ -19,16 +12,14 @@ export interface UsuarioInterface {
     estadoCivil?: string;
     telefone: string;
     naturalidade?: string;
-    endereco?: {
-      cep: string;
-      cidade: string;
-      estado: string;
-      logradouro: string;
-      numero: string;
+      cep?: string;
+      cidade?: string;
+      estado?: string;
+      logradouro?: string;
+      numero?: string;
       complemento?: string;
-      bairro: string;
+      bairro?: string;
       pontoReferencia?: string;
-    };
     materias?: string[];
   }
   
