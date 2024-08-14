@@ -25,7 +25,6 @@ export class CadastroTurmaComponent implements OnInit{
   perfilLogado: string = '';
   docentes: any[] = [];
   
-  // usuarioLogadoEmail: string = '';
 
   constructor(private viaCepService: ViaCepService ,
     private turmaService: TurmasService,
@@ -37,8 +36,7 @@ export class CadastroTurmaComponent implements OnInit{
    ngOnInit(): void {
     this.idTurma = this.activatedRoute.snapshot.params['id'];
     this.perfilLogado = this.menuLateralService.getPerfilUsuarioLogado();
-    // this.usuarioLogadoEmail = this.getEmailUsuarioLogado();
-
+    
 
 
     if (this.idTurma) {
@@ -62,8 +60,6 @@ export class CadastroTurmaComponent implements OnInit{
     if (this.perfilLogado === 'Docente') {
       const docenteNome = this.getNomeUsuarioLogado(); 
       this.docentes = [{nome: docenteNome}];
-      // this.turmaForm.controls['docente'].setValue(docenteNome);
-      // this.docentes = [{nome: docenteNome}];
       this.turmaForm.controls['docente'].disable();
     } else if (this.perfilLogado === 'Administrador') {
       this.docentesService.getDocentesMatriculados().subscribe((docentes) => {
@@ -96,10 +92,6 @@ export class CadastroTurmaComponent implements OnInit{
   }
 
 
-  // getEmailUsuarioLogado(): string {
-  //   const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
-  //   return usuarioLogado.email || '';
-  // }
 
   getNomeUsuarioLogado(): string {
     const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');

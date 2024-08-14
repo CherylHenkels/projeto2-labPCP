@@ -34,7 +34,6 @@ export class PaginaLoginComponent {
       if(usuario) {
         this.paginaLoginService.getPerfil(usuario.email).subscribe(perfil => {
           if (perfil) {
-            console.log('O perfil do usuário é:', perfil); // Imprimirá "Administrador", "Docente" ou "Aluno"
 
             this.login.perfil = perfil.perfil;
             this.login.nome = perfil.nome;
@@ -48,11 +47,6 @@ export class PaginaLoginComponent {
 
  
         setTimeout(() => {
-
-          // console.log("login:" + this.login.email);
-          // console.log("senha" + this.login.senha);
-          // console.log("perfil" +this.login.perfil);
-          // console.log("nome" +this.login.nome);
 
           this.paginaLoginService.login(this.login);
           this.router.navigate(['/home']);

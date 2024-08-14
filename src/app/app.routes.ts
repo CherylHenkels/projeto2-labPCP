@@ -49,7 +49,6 @@ export const routes: Routes = [
     path: 'notas',
     component: NotasAlunosComponent
   },
-  // { path: 'inicio', component: PaginaLoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', redirectTo: '/login' }
 ];

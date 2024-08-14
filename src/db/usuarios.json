@@ -206,17 +206,6 @@
       "data": "2024-07-15",
       "aluno": "Scott Summers",
       "nota": 9
-    },
-    {
-      "id": "9mbkzbrzc",
-      "turma": "Quimica Orgânica",
-      "docente": "Ororo Munroe",
-      "materia": "Química",
-      "nome": "Nota 1",
-      "data": "2024-08-16",
-      "aluno": "Jean Elaine Grey",
-      "nota": 4,
-      "professor": "Ororo Munroe"
     }
   ]
 }
