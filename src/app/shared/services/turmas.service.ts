@@ -24,11 +24,24 @@ export class TurmasService {
     return this.httpClient.get<Array<TurmaInterface>>(this.url);
   }
 
-
   numeroTurmasCadastradas(): Observable<number> {
     return this.getTurmas().pipe(
       map(turmas => turmas.length)
     );
+  }
+
+  getTurmasByDocente(docenteId: string): Observable<TurmaInterface[]> {
+    return this.httpClient.get<TurmaInterface[]>(`${this.url}`, {
+      params: { professor: docenteId }
+    });
+  }
+
+  getTurmasByDocenteName(docenteName: string): Observable<TurmaInterface[]> {
+    return this.httpClient.get<TurmaInterface[]>(`${this.url}?professor=${docenteName}`);
+  }
+
+  getTurmasByAlunoName(alunoName: string): Observable<TurmaInterface[]> {
+    return this.httpClient.get<TurmaInterface[]>(`${this.url}?aluno=${alunoName}`);
   }
   
 }

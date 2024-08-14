@@ -15,12 +15,13 @@ export class CardComponent {
     nome: string,
     idade: number,
     email: string,
+    id:string,
   } | undefined;
 
   constructor(private router:Router, private menuLateralService: MenuLateralService) { }
 
-  verMais(): void {
-    this.router.navigate(['/cadastro-aluno']);
+  verMais(id:string): void {
+    this.router.navigate(['/cadastro-aluno', id]);
   }
 
   lancarNota(): void {

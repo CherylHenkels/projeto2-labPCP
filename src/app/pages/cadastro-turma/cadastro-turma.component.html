@@ -1,5 +1,5 @@
 <div class="cadastro-turma" *ngIf="isAdmin || isDocente">
-    <h1>Cadastrar novo turma</h1>
+    <h1>Cadastrar nova turma</h1>
     <form [formGroup]="turmaForm" class="container-grid" (ngSubmit)="salvarTurma()">
     <div class="col-3">
         <label for="nome">Nome:</label>

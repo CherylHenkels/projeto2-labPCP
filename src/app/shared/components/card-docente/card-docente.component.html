@@ -2,5 +2,5 @@
     <h3>{{ docente?.nome }}</h3>
     <p class="id">id: {{ docente?.id }}</p>
     <p>{{ docente?.email }}</p>
-    <button *ngIf="isAdmin" (click)="verMais()">Ver Mais</button>
+    <button *ngIf="isAdmin && docente" (click)="verMais(docente.id)">Ver Mais</button>
   </div>
