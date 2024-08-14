@@ -97,7 +97,7 @@ export class CadastroNotaComponent implements OnInit {
       const novaNota: NotaInterface = {
         ...this.notaForm.value,
         id: this.idNota ? this.idNota : this.gerarId(),
-        professor: this.notaForm.controls['docente'].value,
+        docente: this.notaForm.controls['docente'].value,
       };
       this.notaService.postNota(novaNota).subscribe((retorno) => {
         window.alert('Nota criada com sucesso');

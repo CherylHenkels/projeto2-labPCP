@@ -46,7 +46,7 @@ export class CadastroDocenteComponent implements OnInit {
       // console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
         if (usuario) {
-          console.log("Usuario: " + JSON.stringify(usuario, null, 2));
+          // console.log("Usuario: " + JSON.stringify(usuario, null, 2));
           this.docenteForm.patchValue({
             nome: usuario.nome || '',
             genero: usuario.genero || '',
