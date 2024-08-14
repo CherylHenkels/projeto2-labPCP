@@ -43,10 +43,8 @@ export class CadastroAlunoComponent implements OnInit{
 
     if (this.idUsuario) {
       this.isEdit = true;
-      // console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
         if(usuario){
-          // console.log("Usuario: " + JSON.stringify(usuario, null, 2));
         this.alunoForm.patchValue({
           nome: usuario.nome || '',
           genero: usuario.genero || '',
@@ -160,10 +158,10 @@ export class CadastroAlunoComponent implements OnInit{
           if (avaliacoes.length > 0) {
             console.log(avaliacoes);
             window.alert('O aluno não pode ser deletado porque possui avaliações vinculadas.');
-            return; // Sai da função se há avaliações vinculadas
+            return; 
           }
 
-          // Se não há turmas ou avaliações vinculadas, deletar o aluno
+          // Se não há avaliações vinculadas, deletar o aluno
           this.usuarioService.deleteUsuario(idAluno).subscribe(() => {
             window.alert('Aluno deletado com sucesso.');
           });

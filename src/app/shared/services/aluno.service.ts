@@ -9,22 +9,7 @@ import { map, Observable } from 'rxjs';
 })
 export class AlunoService {
 
-  // private url = 'http://localhost:3000/usuarios';
-
-  // constructor(private httpClient: HttpClient) { }
-
-  // getAlunos(): Observable<UsuarioInterface[]> {
-  //   return this.httpClient.get<UsuarioInterface[]>(this.url);
-  // }
-
-  // getAluno(id: string): Observable<UsuarioInterface> {
-  //   return this.httpClient.get<UsuarioInterface>(`${this.url}/${id}`);
-  // }
-
-  // buscarAlunos(term: string): Observable<UsuarioInterface[]> {
-  //   return this.httpClient.get<UsuarioInterface[]>(`${this.url}?q=${term}`);
-  // }
-
+ 
   constructor(private usuariosService: UsuariosService) { }
 
 

@@ -43,10 +43,8 @@ export class CadastroDocenteComponent implements OnInit {
 
     if (this.idUsuario) {
       this.isEdit = true;
-      // console.log("idUsuario: " + this.idUsuario);
       this.usuarioService.getUsuario(this.idUsuario).subscribe((usuario) => {
         if (usuario) {
-          // console.log("Usuario: " + JSON.stringify(usuario, null, 2));
           this.docenteForm.patchValue({
             nome: usuario.nome || '',
             genero: usuario.genero || '',
@@ -156,7 +154,7 @@ export class CadastroDocenteComponent implements OnInit {
         if (turmas.length > 0) {
           console.log(turmas);
           window.alert('O docente não pode ser deletado porque possui turmas vinculadas.');
-          return; // Sai da função se há turmas vinculadas
+          return; 
         }
 
         // Se não há turmas vinculadas, verifique as avaliações
@@ -164,7 +162,7 @@ export class CadastroDocenteComponent implements OnInit {
           if (avaliacoes.length > 0) {
             console.log(avaliacoes);
             window.alert('O docente não pode ser deletado porque possui avaliações vinculadas.');
-            return; // Sai da função se há avaliações vinculadas
+            return; 
           }
 
           // Se não há turmas ou avaliações vinculadas, deletar o docente

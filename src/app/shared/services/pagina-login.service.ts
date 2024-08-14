@@ -24,16 +24,16 @@ export class PaginaLoginService {
 
 
   getPerfil(email: string): Observable<UsuarioInterface | null> {
-    return this.httpClient.get<UsuarioInterface>(this.url) // Expect a single Usuario object
+    return this.httpClient.get<UsuarioInterface>(this.url) 
     .pipe(
-      map(usuario => { // Handle both single object and array scenarios
+      map(usuario => { 
         if (Array.isArray(usuario)) {
           return usuario.find(u => u.email === email);
         } else {
-          return usuario.email === email ? usuario : null; // Check for matching email
+          return usuario.email === email ? usuario : null; 
         }
       }),
-      catchError(() => of(null)) // Handle errors
+      catchError(() => of(null)) 
     );
 }
 

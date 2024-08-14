@@ -11,8 +11,6 @@ export class ToolbarComponent {
 
   nomeUsuarioLogado: string = '';
 
-  // constructor(private paginaLoginService: PaginaLoginService) {}
-
   ngOnInit() {
     const usuarioLogado = JSON.parse(sessionStorage.getItem('usuarioLogado') || '{}');
     this.nomeUsuarioLogado = usuarioLogado.nome || 'Usuário';
